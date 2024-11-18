@@ -1,0 +1,127 @@
+<style>
+  .yoomoney-payment-form {
+    align-items: center;
+    position: relative;
+  }
+  .ym-block-title {
+  color: #0066ff; /* set the text color to blue */
+  text-align: center; /* align the text to the center */
+}
+
+  .ym-input-icon-rub {
+    width: 100%;
+    margin-top: 20px;
+    /* adjust the value as needed */
+  }
+  ::after{
+            margin-top: 7px;
+        }
+
+  .ym-customer-info {
+    width: 100%;
+  }
+
+  .ym-payment-btn {
+    margin-top: 20px;
+
+  }
+
+  .ym-btn-pay {
+    width: 100%;
+    position: relative;
+    background-color: #d10101;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .border-container {
+    border: 1px solid #ccc;
+    background-color: #f0d34e58;
+    padding: 20px;
+    border-radius: 10px;
+  }
+</style>
+<br>
+<link rel="stylesheet" href="https://yookassa.ru/integration/simplepay/css/yookassa_construct_form.css">
+<form class="yoomoney-payment-form" action="https://yookassa.ru/integration/simplepay/payment" method="post"
+  accept-charset="utf-8">
+  <div class="border-container">
+  <div class="ym-customer-info">
+    <div class="ym-block-title"><p style="color:rgb(000, 000, 000)">СДЕЛАТЬ ПОЖЕРТВОВАНИЕ </p></div>
+    <input name="custName" class="ym-input" placeholder="Имя благотворителя для поминовения" type="text" value="">
+  </div>
+  <div class="ym-hidden-inputs">
+  </div>
+  <input name="customerNumber" type="hidden" value="Благотворительное пожертвование">
+  <div class="ym-input-icon-rub">
+    <input name="sum" placeholder="0.00" class="ym-input ym-sum-input ym-required-input" type="number" step="any">
+  </div>
+  
+  <div class="ym-payment-btn">
+    <button data-text="Помочь" class="ym-btn-pay ym-result-price"><span class="ym-text-crop">Помочь</span> <span
+        class="ym-price-output"></span> </button>
+  </div>
+
+
+</div>
+  <input name="shopId" type="hidden" value="342647">
+
+
+</form>
+<script src="https://yookassa.ru/integration/simplepay/js/yookassa_construct_form.js"></script>
+<br>    <div class="ym-block-title"><p style="color:rgb(000, 000, 000)"><span class="red"><strong>Миром собираем средства на фундамент газовой котельной</strong></span></p></div><br>
+<style>
+.progress-bar {
+  height: 30px;
+  background-color: #ddd;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.progress {
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.progress-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  padding: 5px;
+}
+
+.progress-amount {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+</style>
+<div class="progress-bar">
+  <div class="progress" style=""></div>
+  <div class="progress-label">
+    Собрано <span class="progress-amount" id="current-amount">217402</span> ₽ / Необходимо собрать <span id="goal-amount">350000</span> ₽
+  </div>
+</div>
+
+<script>
+  const currentAmount = document.getElementById('current-amount');
+  const goalAmount = document.getElementById('goal-amount');
+  const progressBar = document.querySelector('.progress');
+
+  function updateProgressBar() {
+    const percentage = (parseInt(currentAmount.textContent) / parseInt(goalAmount.textContent)) * 100;
+    progressBar.style.width = `${percentage}%`;
+  }
+
+  updateProgressBar();
+
+  // Update the progress bar when the current amount changes
+  currentAmount.addEventListener('DOMSubtreeModified', updateProgressBar);
+</script>
